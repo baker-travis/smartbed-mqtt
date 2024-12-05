@@ -35,6 +35,8 @@ export const okimat = async (mqtt: IMQTTConnection, esphome: IESPConnection) => 
     await pair();
 
     const services = await getServices();
+
+    logInfo('[okimat] Services', services);
     const service = services.find((s) => s.uuid === '62741523-52f9-8864-b1ab-3b3a8d65950b');
     if (!service) {
       logInfo('[Okimat] Could not find expected services for device:', name);
